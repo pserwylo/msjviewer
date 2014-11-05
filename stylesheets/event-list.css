@@ -1,0 +1,33 @@
+/* Future events table */
+#column_full table.pgAidKits th:first-child, /* PDN */
+#column_full table.pgAidKits td:first-child,
+#column_full table.pgAidKits th:nth-child(7), /* Region */
+#column_full table.pgAidKits td:nth-child(7),
+#column_full table.pgAidKits th:nth-child(5),  /* Status (pending staffing/scheduled/etc) */
+#column_full table.pgAidKits td:nth-child(5)
+{
+    display: none;
+}
+
+/* Events table :: Start/End/Status column */
+#column_full table.pgAidKits td:nth-child(3), /* Start date */
+#column_full table.pgAidKits td:nth-child(4)  /* End date */
+{
+    font-size: 0.7em;
+}
+
+#column_full table.pgAidKits tbody tr:not(.alternate_row) {
+    background-color: #eee;
+}
+
+#column_full table.pgAidKits td:nth-child(8) a {  /* EOI */
+    color: #B9061C;
+    background-color: #FDCFD5;
+    padding: 0.5em 0.5em;
+    display: block;
+    text-align: center;
+    font-size: 0.8em;
+    border-radius: 0.5em;
+    border: solid 1px #B9061C;
+    text-decoration: none;
+}

@@ -1,0 +1,20 @@
+/* My roster events table */
+#column_full table.pgAidKits th:first-child, /* PDN */
+#column_full table.pgAidKits td:first-child,
+#column_full table.pgAidKits th:nth-child(6), /* Region */
+#column_full table.pgAidKits td:nth-child(6)
+{
+    display: none;
+}
+
+/* Events table :: Start/End/Status column */
+#column_full table.pgAidKits td:nth-child(3), /* Start date */
+#column_full table.pgAidKits td:nth-child(4), /* End date */
+#column_full table.pgAidKits td:nth-child(7)  /* Status (pending staffing/scheduled/etc) */
+{
+    font-size: 0.7em;
+}
+
+#column_full table.pgAidKits tbody tr:not(.alternate_row) {
+    background-color: #eee;
+}

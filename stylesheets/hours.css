@@ -1,0 +1,21 @@
+/* Past events table */
+#column_full table.pgAidKits td:nth-child(3), /* Start date */
+#column_full table.pgAidKits td:nth-child(4) /* End date */
+{
+    font-size: 0.7em;
+}
+
+#column_full table.pgAidKits td:first-child div { font-size: 1em; } /* Total hours for year */
+
+#column_full table.pgAidKits td:first-child,  /* PDN */
+#column_full table.pgAidKits th:first-child,  /* PDN */
+#column_full table.pgAidKits td:nth-child(6), /* Organiser */
+#column_full table.pgAidKits th:nth-child(6)
+{
+    display: none;
+}
+
+#column_full h1 + div.clear_float + div {
+    width: 100%;
+    text-align: center;
+}

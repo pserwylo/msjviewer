@@ -1,0 +1,156 @@
+body {
+    padding: 0;
+    max-width: 480px;
+    width: auto;
+}
+
+#wrapper {
+    width: auto;
+}
+
+#logo_forlife, #logo_textlong, #footer {
+    display: none;
+}
+
+#header {
+    width: auto;
+    position: static;
+}
+
+#header {
+    height: auto;
+    display: block;
+    background: none;
+}
+
+/* Wraps around #nav */
+#divNav {
+    width: auto;
+    height: auto;
+    display: block;
+    position: static;
+    top: 0;
+    left: 0;
+}
+
+#nav {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#nav li#liRenaissance:first-child,
+#nav li#liRenaissance:nth-child(2),
+#nav li#liRenaissance:nth-child(3) > a,
+#nav li#liRenaissance:nth-child(4),
+#nav li#liRenaissance:nth-child(5) {
+    display: none;
+}
+
+#nav li#liRenaissance {
+    position: static;
+    float: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav li#liRenaissance ul {
+    display: block;
+    background: none;
+    width: 100%;
+    position: static;
+    padding: 0.5em 0;
+    margin: 0;
+    text-align: center;
+}
+
+#nav li#liRenaissance ul li a {
+    width: auto;
+    height: auto;
+    display: inline;
+    float: none;
+}
+
+#nav li#liRenaissance ul li {
+    display: inline-block;
+    float: none;
+    width: 30%;
+    margin: 0;
+    padding: 0;
+}
+
+#nav li#liRenaissance.off ul li a {
+    background: none;
+    color: #B9061C;
+    background-color: #FDCFD5;
+    margin: 0;
+    margin-left: 1px;
+    padding: 0.5em 0.5em;
+    display: block;
+    text-align: center;
+    font-size: 0.8em;
+    border-radius: 0.5em;
+    border: solid 1px #B9061C;
+}
+
+/* Redo background */
+#background {
+    background: none;
+}
+
+/* Main content div */
+#column_full {
+    display: block;
+    width: auto;
+    height: auto;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+
+#column_full > p:first-child {
+    display: none;
+}
+
+#column_full h1 {
+    clear: both;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#column_full form {
+    margin-left: 2em;
+}
+
+/* Events/efficiency tables */
+#column_full table {
+    width: 100% !important;
+}
+
+#column_full table th {
+    padding: 0.5em 0.3em;
+}
+
+#column_full table th,
+#column_full table th a {
+    color: #B9061C !important;
+    background-color: #FDCFD5;
+}
+
+#column_full table th a {
+    text-decoration: underline;
+    display: block;
+}
+
+/* Events table (my events, upcoming events) */
+
+#column_full table.pgAidKits tbody td {
+    padding: 0.7em 0.3em;
+}
+
+#column_full table.pgAidKits colgroup col {
+    width: auto;
+}
