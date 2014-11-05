@@ -1,0 +1,10 @@
+/* Menu is not interesting on Android, because I'm providing our own menu. */
+#divNav {
+    display: none;
+}
+
+/* "Home" <a> tag is in this div */
+#title {
+    display: none;
+}
+
