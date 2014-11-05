@@ -13,11 +13,12 @@ public class WebViewActivity extends Activity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.main );
 
-        WebView view = (WebView)findViewById( R.id.web_view );
-        WebViewClient client = new WebViewClient();
-        client.shouldOverrideUrlLoading( view, "" );
+        WebViewClient client = new MsjWebClient();
 
+        WebView view = (WebView)findViewById( R.id.web_view );
+        view.getSettings().setJavaScriptEnabled( true );
         view.setWebViewClient( client );
+        view.loadUrl( "https://ssl.stjohnvic.com.au/msj" );
 
     }
 }
