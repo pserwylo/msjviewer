@@ -1,5 +1,6 @@
 package com.serwylo.msjviewer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class WebViewActivity extends Activity {
 
     private static final int FIRST_RUN = 1;
 
+    @SuppressLint("AddJavascriptInterface") // I'm only loading data from MSJ, which I trust.
     @Override
     public void onCreate( Bundle savedInstanceState ) {
 
@@ -21,11 +23,12 @@ public class WebViewActivity extends Activity {
 
         setContentView(R.layout.main);
 
-        WebViewClient client = new MsjWebViewClient( this );
+        StylishWebViewClient client = new MsjWebViewClient( this );
 
         WebView view = getWebView();
         view.getSettings().setJavaScriptEnabled( true );
-        view.setWebViewClient( client );
+        view.setWebViewClient(client);
+        view.addJavascriptInterface( client.getJsInterface(), "stylish" );
         view.loadUrl( MsjConstants.URL_ROSTER );
 
         setupTabs();
@@ -76,7 +79,7 @@ public class WebViewActivity extends Activity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
         if ( item.getItemId() == R.id.menu_logout ) {
-            getWebView().loadUrl( MsjConstants.URL_LOGOUT );
+            getWebView().loadUrl(MsjConstants.URL_LOGOUT);
             return true;
         }
 

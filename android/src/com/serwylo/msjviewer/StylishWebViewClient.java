@@ -1,5 +1,6 @@
 package com.serwylo.msjviewer;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
@@ -12,17 +13,28 @@ public abstract class StylishWebViewClient extends WebViewClient {
 
     private static final String TAG = "com.serwylo.msjviewer.StylishWebViewClient";
 
+    protected final Context context;
+
     private Animation showAnimation;
     private Animation hideAnimation;
 
-    public StylishWebViewClient() {
+    private JsInterface jsInterface = new JsInterface();
+
+    public StylishWebViewClient( Context context ) {
+
         super();
+
+        this.context = context.getApplicationContext();
 
         showAnimation = new AlphaAnimation( 0.0f, 1.0f );
         showAnimation.setDuration( 1000 );
 
         hideAnimation = new AlphaAnimation( 1.0f, 0.0f );
         hideAnimation.setDuration( 200 );
+    }
+
+    public JsInterface getJsInterface() {
+        return jsInterface;
     }
 
     @Override
@@ -90,7 +102,7 @@ public abstract class StylishWebViewClient extends WebViewClient {
         for ( String stylesheetUrl : stylesheets ) {
             String javascript = "javascript:(function(){" + addCssToDom( stylesheetUrl ) + "})();";
             Log.d( TAG, javascript );
-            view.loadUrl( javascript );
+            view.loadUrl(javascript);
         }
 
         if ( stylesheets.length > 0 ) {
@@ -104,14 +116,22 @@ public abstract class StylishWebViewClient extends WebViewClient {
     private String addCssToDom( String stylesheetUrl ) {
 
         return
+            "var url = '" + stylesheetUrl + "';" +
             "var headNode = document.getElementsByTagName('head')[0];" +
             "var cssNode = document.createElement('link');" +
             "cssNode.type = 'text/css';" +
             "cssNode.rel = 'stylesheet';" +
-            "cssNode.href = '" + stylesheetUrl + "';" +
+            "cssNode.href = url;" +
             "cssNode.media = 'screen';" +
             "headNode.appendChild(cssNode);";
 
     }
 
+    public class JsInterface {
+
+        private JsInterface() {
+
+        }
+
+    }
 }

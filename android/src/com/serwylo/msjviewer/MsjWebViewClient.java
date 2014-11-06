@@ -15,7 +15,7 @@ public class MsjWebViewClient extends StylishWebViewClient {
     protected final WebViewActivity activity;
 
     public MsjWebViewClient( WebViewActivity activity ) {
-        super();
+        super( activity );
         this.activity = activity;
     }
 
