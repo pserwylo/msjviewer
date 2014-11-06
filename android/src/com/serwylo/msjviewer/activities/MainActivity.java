@@ -1,4 +1,4 @@
-package com.serwylo.msjviewer;
+package com.serwylo.msjviewer.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -8,10 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.TabHost;
+import com.serwylo.msjviewer.*;
 
-public class WebViewActivity extends Activity {
+public class MainActivity extends Activity {
 
     private static final int FIRST_RUN = 1;
 
@@ -44,7 +44,7 @@ public class WebViewActivity extends Activity {
     }
 
     private void checkForFirstRun() {
-        if ( Preferences.get( this ).isFirstRun() ) {
+        if ( Preferences.get(this).isFirstRun() ) {
             showFirstRunMessage();
         }
     }
@@ -80,6 +80,9 @@ public class WebViewActivity extends Activity {
 
         if ( item.getItemId() == R.id.menu_logout ) {
             getWebView().loadUrl(MsjConstants.URL_LOGOUT);
+            return true;
+        } else if ( item.getItemId() == R.id.menu_about ) {
+            startActivity( new Intent( this, AboutActivity.class ) );
             return true;
         }
 

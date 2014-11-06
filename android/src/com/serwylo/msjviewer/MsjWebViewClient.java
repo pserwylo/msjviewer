@@ -1,9 +1,9 @@
 package com.serwylo.msjviewer;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.webkit.WebView;
+import com.serwylo.msjviewer.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ public class MsjWebViewClient extends StylishWebViewClient {
 
     private static final String TAG = "com.serwylo.msjviewer.MsjWebViewClient";
 
-    protected final WebViewActivity activity;
+    protected final MainActivity activity;
 
-    public MsjWebViewClient( WebViewActivity activity ) {
+    public MsjWebViewClient( MainActivity activity ) {
         super( activity );
         this.activity = activity;
     }

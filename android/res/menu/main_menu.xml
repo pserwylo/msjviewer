@@ -3,6 +3,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:title="About"
+        android:id="@+id/menu_about"
+        android:icon="@android:drawable/ic_dialog_info" />
+
+    <item
         android:title="Logout"
         android:id="@+id/menu_logout"
         android:icon="@android:drawable/ic_menu_close_clear_cancel" />
