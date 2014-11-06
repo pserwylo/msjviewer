@@ -168,9 +168,10 @@ body {
 }
 
 #login_form.inputForm {
-    margin: 0;
-    padding: 1em;;
+    margin: 0 2em 0 0 ;
+    padding: 1em;
 }
+
 
 #login_form.inputForm::before {
     content: "Login to MSJ";
@@ -178,12 +179,17 @@ body {
     color: #E12542;
 }
 
-#login_form label,
-#login_form input {
+#login_form label {
     width: auto;
-    padding: 0;
-    margin: 0;
-    height: auto;
+    font-size: 1.2em;
+}
+
+#login_form #j_username,
+#login_form #j_password {
+    display: block;
+    width: 100%;
+    margin: 1em 0 1em 0;
+    height: 2em;
 }
 
 #login_form input.imageField {
