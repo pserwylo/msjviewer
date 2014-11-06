@@ -44,6 +44,6 @@ public class AboutActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-        
+
     }
 }
