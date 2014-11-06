@@ -1,0 +1,22 @@
+/*
+-----------------------------------
+Incorrect password screen
+https://ssl.stjohnvic.com.au/msj/event/j_security_check
+-----------------------------------
+*/
+
+.column_full_content::before {
+    content: "Login failure";
+    font-size: 2em;
+    color: #E12542;
+}
+
+.column_full_content ul.black,
+.column_full_content ul.black li {
+    margin: 0;
+    padding: 0.5em;;
+}
+
+#column_left {
+    display: none;
+}

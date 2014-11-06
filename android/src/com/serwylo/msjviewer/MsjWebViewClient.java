@@ -31,15 +31,19 @@ public class MsjWebViewClient extends StylishWebViewClient {
             urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/hide-on-android.css" );
         }
 
-        if ( webpageUrl.startsWith("https://ssl.stjohnvic.com.au/msj/event/list.jsp") ) {
+        if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/list.jsp" ) ) {
             urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/event-list.css" );
         }
 
-        if ( webpageUrl.startsWith("https://ssl.stjohnvic.com.au/msj/event/hours.jsp") ) {
+        if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/j_security_check" ) ) {
+            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/login-error.css" );
+        }
+
+        if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/hours.jsp" ) ) {
             urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/hours.css" );
         }
 
-        if ( webpageUrl.startsWith("https://ssl.stjohnvic.com.au/msj/event/upcoming.jsp") ) {
+        if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/upcoming.jsp" ) ) {
             urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/upcoming.css" );
         }
 

@@ -154,3 +154,42 @@ body {
 #column_full table.pgAidKits colgroup col {
     width: auto;
 }
+
+/* Login screen (could be on any url) */
+
+#logo_forlife_white,
+#column_full > img,
+#header > a > img,
+#content_wrapper #column_left,
+.column_full_content > #title,
+.column_full_content > p, /* "Login here" */
+#login_form > fieldset > .label_header /* "Your Details:" */ {
+    display: none;
+}
+
+#login_form.inputForm {
+    margin: 0;
+    padding: 1em;;
+}
+
+#login_form.inputForm::before {
+    content: "Login to MSJ";
+    font-size: 2em;
+    color: #E12542;
+}
+
+#login_form label,
+#login_form input {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
+
+#login_form input.imageField {
+    margin-top: 1em;
+}
+
+#background {
+    background-image: none;
+}
