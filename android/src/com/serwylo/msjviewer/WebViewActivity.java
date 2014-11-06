@@ -3,6 +3,8 @@ package com.serwylo.msjviewer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,9 +17,9 @@ public class WebViewActivity extends Activity {
     @Override
     public void onCreate( Bundle savedInstanceState ) {
 
-        super.onCreate( savedInstanceState );
+        super.onCreate(savedInstanceState);
 
-        setContentView( R.layout.main );
+        setContentView(R.layout.main);
 
         WebViewClient client = new MsjWebViewClient( this );
 
@@ -60,6 +62,26 @@ public class WebViewActivity extends Activity {
                 Preferences.get( this ).setIsFirstRun( false );
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate( R.menu.main_menu, menu );
+        return true;
+
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+        if ( item.getItemId() == R.id.menu_logout ) {
+            getWebView().loadUrl( MsjConstants.URL_LOGOUT );
+            return true;
+        }
+
+        return super.onMenuItemSelected( featureId, item );
+
     }
 
     private void setupTabs() {
