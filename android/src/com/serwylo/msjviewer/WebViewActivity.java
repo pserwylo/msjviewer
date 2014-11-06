@@ -1,6 +1,7 @@
 package com.serwylo.msjviewer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -9,13 +10,16 @@ import android.widget.TabHost;
 
 public class WebViewActivity extends Activity {
 
+    private static final int FIRST_RUN = 1;
+
     @Override
     public void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState );
+
         setContentView( R.layout.main );
 
-        WebViewClient client = new MsjWebViewClient();
+        WebViewClient client = new MsjWebViewClient( this );
 
         WebView view = getWebView();
         view.getSettings().setJavaScriptEnabled( true );
@@ -26,6 +30,36 @@ public class WebViewActivity extends Activity {
 
         getTabHost().setCurrentTab( 0 );
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkForFirstRun();
+    }
+
+    private void checkForFirstRun() {
+        if ( Preferences.get( this ).isFirstRun() ) {
+            showFirstRunMessage();
+        }
+    }
+
+    private void showFirstRunMessage() {
+        Intent intent = new Intent( this, FirstRunActivity.class );
+        startActivityForResult(intent, FIRST_RUN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == FIRST_RUN ) {
+            if ( resultCode == Activity.RESULT_CANCELED ) {
+                finish();
+            } else if ( resultCode == Activity.RESULT_OK ) {
+                Preferences.get( this ).setIsFirstRun( false );
+            }
+        }
     }
 
     private void setupTabs() {

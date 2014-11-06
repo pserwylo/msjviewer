@@ -1,7 +1,9 @@
 package com.serwylo.msjviewer;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
+import android.webkit.WebView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,13 @@ import java.util.List;
 public class MsjWebViewClient extends StylishWebViewClient {
 
     private static final String TAG = "com.serwylo.msjviewer.MsjWebViewClient";
+
+    protected final WebViewActivity activity;
+
+    public MsjWebViewClient( WebViewActivity activity ) {
+        super();
+        this.activity = activity;
+    }
 
     @Override
     protected String[] getStylesheetUrls(String webpageUrl) {
