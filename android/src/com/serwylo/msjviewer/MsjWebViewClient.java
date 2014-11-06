@@ -6,9 +6,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MsjWebClient extends StylishWebClient {
+public class MsjWebViewClient extends StylishWebViewClient {
 
-    private static final String TAG = "com.serwylo.msjviewer.MsjWebClient";
+    private static final String TAG = "com.serwylo.msjviewer.MsjWebViewClient";
 
     @Override
     protected String[] getStylesheetUrls(String webpageUrl) {
@@ -19,6 +19,7 @@ public class MsjWebClient extends StylishWebClient {
         Log.d( TAG, "Checking whether we have custom styles for: " + webpageUrl );
         if ( uri.getHost().equals( "ssl.stjohnvic.com.au" ) ) {
             urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/base.css" );
+            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/hide-on-android.css" );
         }
 
         if ( webpageUrl.startsWith("https://ssl.stjohnvic.com.au/msj/event/list.jsp") ) {

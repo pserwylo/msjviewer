@@ -3,8 +3,12 @@
     display: none;
 }
 
-/* "Home" <a> tag is in this div */
+/* "Home" <a> tag is in this div. */
 #title {
     display: none;
 }
 
+/* The tabs provide sufficient headings, so as to make the HTML heading redundant. */
+h1 {
+    display: none;
+}
