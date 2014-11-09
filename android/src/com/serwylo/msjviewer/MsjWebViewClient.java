@@ -42,24 +42,24 @@ public class MsjWebViewClient extends StylishWebViewClient {
 
         Log.d( TAG, "Checking whether we have custom styles for: " + webpageUrl );
         if ( uri.getHost().equals( "ssl.stjohnvic.com.au" ) ) {
-            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/base.css" );
-            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/hide-on-android.css" );
+            urls.add( RawGitPaths.path( "base" ) );
+            urls.add( RawGitPaths.path( "hide-on-android" ) );
         }
 
         if ( webpageUrl.startsWith("https://ssl.stjohnvic.com.au/msj/event/list.jsp") ) {
-            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/event-list.css" );
+            urls.add( RawGitPaths.path( "event-list" ) );
         }
 
         if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/j_security_check" ) ) {
-            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/login-error.css" );
+            urls.add( RawGitPaths.path( "login-error" ) );
         }
 
         if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/hours.jsp" ) ) {
-            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/hours.css" );
+            urls.add( RawGitPaths.path( "hours" ) );
         }
 
         if ( webpageUrl.startsWith( "https://ssl.stjohnvic.com.au/msj/event/upcoming.jsp" ) ) {
-            urls.add( "https://rawgit.com/pserwylo/msjviewer/master/stylesheets/upcoming.css" );
+            urls.add( RawGitPaths.path( "upcoming" ) );
         }
 
         String[] urlsArray = new String[ urls.size() ];
