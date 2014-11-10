@@ -107,9 +107,9 @@ public class MainActivity extends Activity {
         TabHost.TabSpec eoiTab    = tabs.newTabSpec( "EOI" );
         TabHost.TabSpec hoursTab  = tabs.newTabSpec("Hours");
 
-        rosterTab.setContent( factory ).setIndicator("Roster");
-        eoiTab.setContent( factory ).setIndicator( "EOI" );
-        hoursTab.setContent( factory ).setIndicator( "Hours" );
+        rosterTab.setContent( factory ).setIndicator( "Roster", getResources().getDrawable( android.R.drawable.ic_menu_my_calendar ) );
+        eoiTab.setContent( factory ).setIndicator( "EOI", getResources().getDrawable( android.R.drawable.ic_menu_search ) );
+        hoursTab.setContent( factory ).setIndicator( "Hours", getResources().getDrawable( android.R.drawable.ic_menu_agenda ) );
 
         tabs.addTab(rosterTab);
         tabs.addTab( eoiTab );

@@ -9,7 +9,7 @@
             font-family: "Roboto Light", "Roboto Lt", Helvetica, sans-serif;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, a {
             color: #E12542;
         }
 
@@ -48,6 +48,36 @@
         loading the original, and then it is restyling it to display nicely on a mobile device.
     </p>
 
+    <a href="#tech-details" onclick="document.getElementById( 'tech-details' ).style.display='block';">(View technical details)</a>
+
+    <div id="tech-details" style="display: none;">
+        <a name="tech-details"></a>
+        <p>
+            The app uses an Android <code>WebView</code> to render the MSJ website. Once a page is loaded,
+            a <code>javascript:</code> URL is loaded, which:
+        </p>
+
+        <ul>
+            <li>Creates one or more <code>link</code> DOM nodes.</li>
+            <li>Sets the <code>href</code> attribute to a CSS file (hosted on GitHub, but proxied through https://cdn.rawgit.com).</li>
+            <li>Attaches the <code>link</code> node to the <code>head</code> of the page.</li>
+        </ul>
+
+        <p>
+            This has the effect of applying the CSS in the linked file to the page being viewed.
+        </p>
+
+        <p>
+            The app intentionally does <em>not</em>:
+        </p>
+
+        <ul>
+            <li>Proxy traffic from MSJ.</li>
+            <li>Modify (or even read) the HTML of the page once loaded.</li>
+            <li>Manually save your username and password (the "remember password" feature is provided by the Android <code>WebView</code>, not by this app).</li>
+        </ul>
+    </div>
+
     <h2>Why does it exist?</h2>
 
     <p>
@@ -69,10 +99,10 @@
     <h2>Privacy</h2>
 
     <p>
-        This app respects your privacy. It doesn't send any information to anywhere other
+        This app respects your privacy. It doesn't send information anywhere other
         than the official MSJ website (https://ssl.stjohnvic.com.au).
-        If you are technically minded, and would like to verify this, the code is free and open source and
-        available from https://github.com/pserwylo/msjviewer.
+        If you are technically minded, and would like to verify this, the code is free and open source
+        (https://github.com/pserwylo/msjviewer).
     </p>
 
 </body>

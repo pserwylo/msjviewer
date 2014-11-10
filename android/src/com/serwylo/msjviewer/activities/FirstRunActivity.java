@@ -18,6 +18,7 @@ public class FirstRunActivity extends Activity {
         WebViewClient client = new WebViewClient();
         WebView view = (WebView)findViewById( R.id.web_view );
         view.setWebViewClient( client );
+        view.getSettings().setJavaScriptEnabled( true );
         view.loadUrl( "file:///android_asset/about.html" );
 
         findViewById( R.id.btn_cancel ).setOnClickListener( new Button.OnClickListener() {

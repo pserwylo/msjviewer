@@ -20,6 +20,7 @@ public class AboutActivity extends Activity {
 
         WebViewClient client = new WebViewClient();
         WebView view = (WebView)findViewById( R.id.web_view );
+        view.getSettings().setJavaScriptEnabled( true );
         view.setWebViewClient( client );
         view.loadUrl( "file:///android_asset/about.html" );
 
