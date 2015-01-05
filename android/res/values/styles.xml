@@ -4,15 +4,7 @@
         <!-- backward-compatibility theme options go here -->
     </style>
 
-    <style name="AppBaseThemeDark" parent="android:Theme.Black">
-        <!-- backward-compatibility theme options go here -->
-    </style>
-
     <style name="AppThemeLight" parent="AppBaseThemeLight">
-        <!-- customizations that are not API-level specific go here. -->
-    </style>
-
-    <style name="AppThemeDark" parent="AppBaseThemeDark">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
