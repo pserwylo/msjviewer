@@ -160,4 +160,8 @@ public class MainActivity extends Activity {
     private TabHost getTabHost() {
         return (TabHost)findViewById( android.R.id.tabhost );
     }
+
+    public void showDisconnected() {
+        showUrl( "file:///android_asset/disconnected.html" );
+    }
 }

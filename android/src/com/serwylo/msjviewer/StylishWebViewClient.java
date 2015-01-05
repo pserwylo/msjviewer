@@ -1,7 +1,9 @@
 package com.serwylo.msjviewer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -20,6 +22,10 @@ public abstract class StylishWebViewClient extends WebViewClient {
 
     private JsInterface jsInterface = new JsInterface();
 
+    private boolean shouldHandleFileUrls = false;
+
+    private boolean visible = true;
+
     public StylishWebViewClient( Context context ) {
 
         super();
@@ -33,6 +39,10 @@ public abstract class StylishWebViewClient extends WebViewClient {
         hideAnimation.setDuration( 200 );
     }
 
+    public void setShouldHandleFileUrls( boolean value ) {
+        shouldHandleFileUrls = value;
+    }
+
     public JsInterface getJsInterface() {
         return jsInterface;
     }
@@ -44,31 +54,29 @@ public abstract class StylishWebViewClient extends WebViewClient {
     }
 
     protected void fadeIn( final WebView view ) {
-        showAnimation.setAnimationListener( new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                view.setVisibility(View.VISIBLE);
-            }
+        if (!visible) {
+            visible = true;
+            showAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    view.setVisibility(View.VISIBLE);
+                }
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
+                @Override
+                public void onAnimationEnd(Animation animation) {}
 
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        view.startAnimation(showAnimation);
+                @Override
+                public void onAnimationRepeat(Animation animation) {}
+            });
+            view.startAnimation(showAnimation);
+        }
     }
 
     protected void fadeOut( final WebView view ) {
+        visible = false;
         hideAnimation.setAnimationListener( new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
+            public void onAnimationStart(Animation animation) {}
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -76,9 +84,7 @@ public abstract class StylishWebViewClient extends WebViewClient {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
+            public void onAnimationRepeat(Animation animation) {}
         });
         view.startAnimation(hideAnimation);
     }
@@ -86,18 +92,43 @@ public abstract class StylishWebViewClient extends WebViewClient {
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
 
-        String[] stylesheets = getStylesheetUrls( url );
-        if ( stylesheets.length > 0 ) {
-            fadeOut( view );
+        Log.d(TAG, "onPageStarted( \"" + url + "\"");
+
+        if ( requiresStyling( url ) ) {
+            String[] stylesheets = getStylesheetUrls( url );
+            if (stylesheets.length > 0) {
+                fadeOut(view);
+            }
+        } else if ( isMailTo( url ) ) {
+            Intent intent = new Intent( Intent.ACTION_SENDTO, Uri.parse( url ) );
+            intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+            context.startActivity( intent );
         }
 
     }
 
+    protected static boolean isMailTo( String url ) {
+        return url != null && url.startsWith( "mailto:" );
+    }
 
+    protected static boolean isFile( String url ) {
+        return url != null && url.startsWith( "file:" );
+    }
+
+    private boolean requiresStyling( String url ) {
+        return !isMailTo( url ) && ( shouldHandleFileUrls || !isFile( url ) );
+    }
 
     @Override
     public void onPageFinished(WebView view, String url)
     {
+        Log.d( TAG, "onPageFinished( \"" + url + "\"" );
+
+        if ( !requiresStyling( url ) ) {
+            fadeIn( view );
+            return;
+        }
+
         String[] stylesheets = getStylesheetUrls( url );
         for ( String stylesheetUrl : stylesheets ) {
             String javascript = "javascript:(function(){" + addCssToDom( stylesheetUrl ) + "})();";

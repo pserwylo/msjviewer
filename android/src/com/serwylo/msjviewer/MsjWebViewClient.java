@@ -1,5 +1,7 @@
 package com.serwylo.msjviewer;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.webkit.WebView;
@@ -24,6 +26,10 @@ public class MsjWebViewClient extends StylishWebViewClient {
 
         super.onPageFinished(view, url);
 
+        if ( isMailTo( url ) ) {
+            return;
+        }
+
         // A little weird, but onPageFinished doesn't seem to get invoked if we received a
         // 302 redirect to the /login.jsp page. However, the login page is only navigated to
         // directly after a logout, so far as I can tell. Other times the user sees a login
@@ -35,13 +41,22 @@ public class MsjWebViewClient extends StylishWebViewClient {
     }
 
     @Override
+    public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+
+        Log.d( TAG, "onReceivedError( \"" + failingUrl + "\"" );
+
+        activity.showDisconnected();
+
+    }
+
+    @Override
     protected String[] getStylesheetUrls(String webpageUrl) {
 
         Uri uri = Uri.parse( webpageUrl );
         List<String> urls = new ArrayList<String>();
 
         Log.d( TAG, "Checking whether we have custom styles for: " + webpageUrl );
-        if ( uri.getHost().equals( "ssl.stjohnvic.com.au" ) ) {
+        if ( "ssl.stjohnvic.com.au".equals( uri.getHost() ) ) {
             urls.add( RawGitPaths.path( "base" ) );
             urls.add( RawGitPaths.path( "hide-on-android" ) );
         }
