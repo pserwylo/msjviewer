@@ -132,6 +132,11 @@ public class MainActivity extends Activity {
 
     }
 
+    public void navigateToMainTab() {
+        showRoster();
+        getTabHost().setCurrentTabByTag( "Roster" );
+    }
+
     protected void showRoster() {
         showUrl( MsjConstants.URL_ROSTER );
     }

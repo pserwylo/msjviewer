@@ -27,10 +27,10 @@ public class MsjWebViewClient extends StylishWebViewClient {
         // A little weird, but onPageFinished doesn't seem to get invoked if we received a
         // 302 redirect to the /login.jsp page. However, the login page is only navigated to
         // directly after a logout, so far as I can tell. Other times the user sees a login
-        // prompt (e.g. in response to a session timeout), the form is shonw at the same
+        // prompt (e.g. in response to a session timeout), the form is shown at the same
         // url they were trying to visit.
         if ( url.equals( MsjConstants.URL_LOGIN ) ) {
-            activity.finish();
+            activity.navigateToMainTab();
         }
     }
 
